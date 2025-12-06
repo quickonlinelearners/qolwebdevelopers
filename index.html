@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QOL Web Developers - Building Digital Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- GLOBAL STYLES --- */
+        :root {
+            --primary-color: #007bff; /* Blue */
+            --primary-glow: rgba(0, 123, 255, 0.5); 
+            --secondary-color: #f8f9fa; /* Light Gray */
+            --dark-color: #343a40; /* Dark Gray */
+            --text-color: #495057;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: white; 
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            box-shadow: none; 
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        /* Desktop Links */
+        .nav-links a {
+            margin-left: 25px;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .nav-links a.btn {
+            color: white;
+        }
+        
+        /* Hamburger Icon */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--dark-color);
+        }
+
+        /* =================================================== */
+        /* --- HERO SECTION WITH LIVE ANIMATED STARFIELD --- */
+        /* =================================================== */
+        
+        /* Define keyframes for movement */
+        @keyframes move-stars {
+            from { background-position: 0 0; }
+            to { background-position: -10000px 5000px; }
+        }
+
+        #hero {
+            /* Keep starfield background */
+            background: #1a202c; 
+            background-image: 
+                radial-gradient(circle, #ffffff 1px, transparent 1px),
+                radial-gradient(circle, #f0f0f0 1.5px, transparent 1.5px),
+                radial-gradient(circle, #e0e0e0 2px, transparent 2px);
+            
+            background-size: 50px 50px, 75px 75px, 100px 100px;
+
+            animation: move-stars 100s linear infinite, move-stars 150s linear infinite, move-stars 200s linear infinite; 
+            background-position: 0 0, 100px 100px, 50px 50px;
+
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden; 
+            color: white;
+        }
+        
+        #hero h1, #hero p {
+            color: white;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        
+        /* --- WHAT WE DO SECTION STYLES --- */
+        #what-we-do {
+            background: var(--secondary-color);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        #what-we-do .container {
+            max-width: 900px;
+        }
+
+        #what-we-do ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px auto 0 auto;
+            text-align: left;
+            font-size: 1.15rem;
+        }
+
+        #what-we-do ul li {
+            margin-bottom: 20px;
+            padding: 15px 20px 15px 40px; 
+            border-left: 4px solid var(--primary-color);
+            background: white;
+            border-radius: 5px;
+            position: relative;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        #what-we-do ul li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #what-we-do ul li:before {
+            content: "✓"; 
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* --- BENEFITS SECTION --- */
+        #benefits {
+            background: white;
+            padding: 60px 0;
+        }
+        
+        #benefits .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        /* Standard shadow restored */
+        #benefits .benefit-item {
+            background: var(--secondary-color);
+            padding: 25px;
+            border-radius: 8px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        #benefits .benefit-item:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        #benefits .benefit-item strong {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #212529;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* =============================== */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        /* =============================== */
+        
+        @media (max-width: 768px) {
+            
+            /* Logo Optimization */
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            /* Show the hamburger icon */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* --- MOBILE MENU OVERLAY STYLES --- */
+            .nav-links {
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%; /* Position right below the header */
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid #eee;
+                /* Add subtle transition for opening/closing */
+                transition: height 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                display: flex;
+                /* Ensure it sits above the main content */
+                z-index: 999; 
+            }
+
+            .nav-links a {
+                margin: 0;
+                padding: 18px 20px; /* Increased vertical padding for tap target size */
+                border-bottom: 1px solid #e0e0e0; /* Clearer link separation */
+                text-align: left; /* Align links to the left */
+                width: 100%;
+                color: var(--dark-color);
+                font-weight: 600;
+                transition: background 0.2s;
+            }
+            
+            .nav-links a:hover {
+                background: var(--secondary-color); /* Highlight on tap/hover */
+            }
+
+            .nav-links .btn {
+                margin: 20px; /* Margin around the button */
+                width: calc(100% - 40px);
+                color: white; 
+                text-align: center;
+            }
+
+            /* Typography */
+            #hero h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            
+            /* Layout adjustments */
+            #benefits .benefits-grid {
+                grid-template-columns: 1fr; 
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            .logo {
+                font-size: 1.3rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+            #hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">QOL Web Developers</div>
+                
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+
+                <div class="nav-links" id="nav-links">
+                    <a href="#what-we-do">What We Do</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="tel:+15553366765" class="btn">Schedule a Demo</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Building Digital Excellence That Drives Growth.</h1>
+            <p>QOL Web Developers designs, develops, and deploys high-performance websites tailored for your business success.</p>
+            <a href="tel:+15553366765" class="btn">Schedule a Demo</a>
+        </div>
+    </section>
+    
+    <section id="what-we-do">
+        <div class="container">
+            <h2>🛠️ What We Do: Our Core Advantage</h2>
+            
+            <ul>
+                <li>We build **powerful, high-converting landing pages** with zero complexity.</li>
+                <li>We only use **core front-end technologies** (HTML, CSS, JavaScript) for maximum performance.</li>
+                <li>We eliminate infrastructure costs by using **free hosting/domain services** and avoiding paid databases or servers.</li>
+                <li>Our model is designed to get you **high sales** with **no extra, hidden infrastructure cost**.</li>
+            </ul>
+
+        </div>
+    </section>
+
+    <section id="benefits">
+        <div class="container">
+            <h2>✨ Key Benefits of Partnering with QOL</h2>
+            <div class="benefits-grid">
+                
+                <div class="benefit-item">
+                    <strong>Powerful Website with Call-To-Action</strong>
+                    <p>Every page we build is engineered to convert visitors into leads or customers, not just inform them.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <strong>Free Hosting and Domain</strong>
+                    <p>Launch your project without extra upfront costs. We handle the initial setup of your domain and reliable hosting.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <strong>No Paid Database Required</strong>
+                    <p>We leverage efficient, modern, serverless, or open-source solutions to keep your long-term operating costs low.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <strong>Get Sales Online & Offline</strong>
+                    <p>Integrate digital lead generation with physical business needs, driving success across all customer touchpoints.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <strong>Dedicated After-Launch Support</strong>
+                    <p>Receive ongoing technical assistance, bug fixes, and maintenance guidance long after your site goes live.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 QOL Web Developers. All Rights Reserved. | Call: +1 (555) 336-6765</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+            // Optional: Toggle aria-expanded status for accessibility
+            var isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !isExpanded);
+            this.textContent = isExpanded ? '☰' : '✕'; // Change icon to 'X' when open
+        });
+        
+        // Close menu when a link is clicked (useful for single-page sites)
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('nav-links').classList.remove('active');
+                var menuToggle = document.getElementById('menu-toggle');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.textContent = '☰'; // Reset icon to hamburger
+            });
+        });
+    </script>
+
+</body>
+</html>
